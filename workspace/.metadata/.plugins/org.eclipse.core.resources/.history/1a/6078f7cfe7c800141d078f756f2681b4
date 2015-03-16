@@ -1,0 +1,25 @@
+package cscie55.hw2;
+
+import static org.junit.Assert.assertEquals;
+
+public class ElevatorMain {
+
+	
+	public static void main(String[] args) {
+		
+		Building building = new Building();
+		Elevator elevator = building.elevator();
+		int expectedFloorNumber = 1;
+		
+		while (expectedFloorNumber < Building.FLOORS){
+			
+			elevator.move();
+			System.out.println(elevator.currentFloor());
+			expectedFloorNumber++;
+		}
+		
+	}
+}	
+
+
+

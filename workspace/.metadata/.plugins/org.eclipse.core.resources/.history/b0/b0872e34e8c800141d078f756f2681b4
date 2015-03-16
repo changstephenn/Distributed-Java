@@ -1,0 +1,24 @@
+package cscie55.hw2;
+
+
+public class ElevatorMain {
+	
+	public static void main(String[] args) {
+		
+//		Building building = new Building();
+//		Elevator elevator = building.elevator();
+//		int expectedFloorNumber = 1;
+//		
+//		while (expectedFloorNumber < Building.FLOORS){
+//			
+//			elevator.move();
+//			System.out.println(elevator.currentFloor());
+//			expectedFloorNumber++;
+//		}
+		System.out.println("hello");
+		
+	}
+}	
+
+
+

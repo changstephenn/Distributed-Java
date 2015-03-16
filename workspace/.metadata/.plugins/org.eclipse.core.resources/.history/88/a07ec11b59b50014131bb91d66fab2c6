@@ -1,0 +1,87 @@
+package cscie55.hw1;
+
+
+public class Elevator {
+
+		//private int floors = 7;// number of floors in the building
+		private int elevatorCapacity = 10;//
+		private int numOfFloors = 7;
+		
+		public int currentFloor;
+		public char currentDirection;
+		public int floorRequested; //dont forget it could be for passenger pick up too not just drop off
+		public int currentPassengers;
+		
+		public int numPassengersDestined;// destined for each floor
+		public int[] destination = new int[7];//whether it is a destination or not is the element
+		public int[] floors = new int[7];//passengers are the elements
+		
+		Elevator(){
+			currentFloor = 0;
+			numPassengersDestined = 0;
+			currentPassengers = 0;
+		}
+		
+		public void move(){
+			
+			if (currentFloor == 0){//bottom floor it has to go up
+				currentDirection = 'u';
+			}
+			if (currentFloor == 7){//top floor it has to go down
+				currentDirection = 'd';
+			}
+			
+			if ( currentDirection == 'u'){
+				currentFloor++;
+			}
+			if ( currentDirection == 'd'){
+				currentFloor--;
+			}
+				
+			if ( destination[currentFloor] == 1){//this floor is a destination because = 1
+				destination[currentFloor] = 0;//floorRequested is no longer a destination
+				floors[floorRequested] = 0;//empty the passengers that selected that floor
+			}
+			
+			
+			
+		}
+		
+		
+		public void boardPassenger(int floor){
+			
+			currentPassengers++;
+				
+			floors[floor] += 1;
+			destination[floor] = 1;//1 means its a destination 0 means elevator will not stop at this floor	
+		}
+		
+		
+		public String toString(){
+			
+			// numPassengersOnBoard;
+			//current floor
+			
+			//System.out.println("The current floor is " + currentFloor + " There are " + currentPassengers + "." );
+			
+			return toString();
+			//return System.out.println("The current floor is " + currentFloor + " There are " + currentPassengers + "." );
+		}
+		
+		
+		
+		public void stop(){
+			if ( destination == currentFloor ){
+				System.out.println("Stopping on floor" + currentFloor);
+				currentPassengers = currentPassengers - numPassengersDestined; //discharge the @ of ppl to that floor
+				//eliminate the that floor as destination. put 0 in that spot of the array
+				
+			}
+		}
+		
+		
+		
+}
+
+
+

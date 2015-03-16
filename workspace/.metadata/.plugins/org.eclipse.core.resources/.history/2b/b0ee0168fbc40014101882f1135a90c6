@@ -1,0 +1,14 @@
+package cscie55.hw2test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class HW2ElevatorSimulationTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

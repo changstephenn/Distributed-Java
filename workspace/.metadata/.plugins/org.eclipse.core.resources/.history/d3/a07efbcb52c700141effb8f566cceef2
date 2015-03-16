@@ -1,0 +1,36 @@
+package cscie55.hw2;
+
+//put the Floor class into array?
+public class Building {
+	
+	public static int FLOORS = 8;
+	
+	private Elevator BuildingElevator;
+	
+	public Building(){
+		
+		BuildingElevator = new Elevator(this);
+		//The Building constructor creates an Elevator, and one floor for each floor number.
+		//(Move the FLOORS variable, that was in the Elevator class in homework 1 to the 
+		//Building class.)
+		Floor one = new Floor(this, 1);
+		Floor two = new Floor(this, 2);
+	}
+	
+	public Elevator elevator(){// returns the buildings elevator
+		
+		return BuildingElevator;
+		
+	}
+	
+	public Floor floor(int floorNumber){//returns floor object for floorNumber
+		
+		return Floor;
+		//building.floor(3).waitForElevator();
+		
+		
+	}
+	
+
+}
+//Building.floor(1);

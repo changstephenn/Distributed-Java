@@ -1,0 +1,43 @@
+package cscie55.hw2;
+
+import static org.junit.Assert.assertEquals;
+
+public class ElevatorMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+		private void checkElevator(Elevator elevator, int floorNumber, int passengers)
+	    {
+	        assertEquals(floorNumber, elevator.currentFloor());
+	        assertEquals(passengers, elevator.passengers());
+	    }
+		
+		 public void elevatorMotion()
+		    {
+		        Building building = new Building();
+		        Elevator elevator = building.elevator();
+		        int expectedFloorNumber = 1;
+		        // Go to the top
+		       
+		        while (expectedFloorNumber < Building.FLOORS) {
+		            checkElevator(elevator, expectedFloorNumber, 0);
+		            elevator.move();
+		            expectedFloorNumber++;
+		            checkElevator(elevator, expectedFloorNumber, 0);
+		        }
+		        
+		        assertEquals(Building.FLOORS, expectedFloorNumber);
+		        // Go back to the bottom
+		        while (expectedFloorNumber > 1) {
+		            checkElevator(elevator, expectedFloorNumber, 0);
+		            elevator.move();
+		            expectedFloorNumber--;
+		            checkElevator(elevator, expectedFloorNumber, 0);
+		        }
+		        assertEquals(1, expectedFloorNumber);
+		    }
+
+	}
+
+
