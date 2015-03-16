@@ -47,6 +47,7 @@ public class Elevator {
                  currentFloor--;
            }
           
+                
            if ( floors[currentFloor] != 0 ){//if there is at least 1 person that needs to stop on this floor
                 
                         currentPassengers = currentPassengers - floors[currentFloor];//unload passengers that belong here
@@ -61,6 +62,8 @@ public class Elevator {
         	   currentPassengers += 1;
         	   
            }
+           
+
     }
    
    
@@ -73,16 +76,17 @@ public class Elevator {
           
         }
            
-        else if (currentPassengers >= CAPACITY) {
+        else {
         	
         	//throw new ElevatorFullException(destinationFloorNumber);
-        	
-        	throw new ElevatorFullException(destinationFloorNumber);
-        	
+        	if (currentPassengers >= CAPACITY){
+        		//throw new ElevatorFullException("The Elevator is full");
+        	}
         
         }
            
     }
+   
    
     public String toString(){
           

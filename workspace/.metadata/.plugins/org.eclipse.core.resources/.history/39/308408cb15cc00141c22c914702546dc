@@ -64,7 +64,7 @@ public class Elevator {
     }
    
    
-    public void boardPassenger(int destinationFloorNumber) throws ElevatorFullException{
+     void boardPassenger(int destinationFloorNumber) throws ElevatorFullException{
     	
         if ( currentPassengers < CAPACITY){  
            currentPassengers++;
@@ -73,12 +73,12 @@ public class Elevator {
           
         }
            
-        else if (currentPassengers >= CAPACITY) {
+        else {
         	
         	//throw new ElevatorFullException(destinationFloorNumber);
-        	
-        	throw new ElevatorFullException(destinationFloorNumber);
-        	
+        	if (currentPassengers >= CAPACITY){
+        		//throw new ElevatorFullException("The Elevator is full");
+        	}
         
         }
            

@@ -2,20 +2,17 @@ package cscie55.hw2;
 
 public class ElevatorFullException extends Exception {
 
-	
+	private int floor;
 	
 	public ElevatorFullException(int floor){
 		
-		 try {
-		        
-		        elevator.boardPassenger(); // May throw ElevatorFullException
-		        // The passenger boarded successfully
-		       
-		    } catch (ElevatorFullException e) {
-		        // The passenger was unable to board because the elevator is full.
-		        
-		    }
+	this.floor = floor;
 	
+	}
 	
+	public int getFloor(){
+		
+		return floor;
+	}
 	
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="HW2ElevatorSimulationTest" project="DistributedJava" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="cscie55.hw2test.HW2ElevatorSimulationTest" time="0.0">
+    <testcase name="elevatorFull" classname="cscie55.hw2test.HW2ElevatorSimulationTest" time="0.0"/>
+    <testcase name="disembark" classname="cscie55.hw2test.HW2ElevatorSimulationTest" time="0.0"/>
+    <testcase name="call" classname="cscie55.hw2test.HW2ElevatorSimulationTest" time="0.0"/>
+    <testcase name="elevatorMotion" classname="cscie55.hw2test.HW2ElevatorSimulationTest" time="0.0"/>
+  </testsuite>
+</testrun>

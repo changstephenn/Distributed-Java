@@ -73,12 +73,12 @@ public class Elevator {
           
         }
            
-        else if (currentPassengers >= CAPACITY) {
+        else {
         	
         	//throw new ElevatorFullException(destinationFloorNumber);
-        	
-        	throw new ElevatorFullException(destinationFloorNumber);
-        	
+        	if (currentPassengers >= CAPACITY){
+        		//throw new ElevatorFullException("The Elevator is full");
+        	}
         
         }
            
