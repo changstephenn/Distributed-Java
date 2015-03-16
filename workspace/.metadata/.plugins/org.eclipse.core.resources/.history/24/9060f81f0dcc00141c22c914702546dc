@@ -10,8 +10,9 @@ public class Elevator {
     private char currentDirection;
     private int currentPassengers;
    
-    public int [] floors = new int[FLOORS+1]; //passengers are the elements, number  of passengers for that floor
-    public int [] passengersWaiting =  new int[FLOORS+1]; //keeps track of passengers waiting on that floor
+    public int [] destination = new int [FLOORS+1]; //elements can only be 0 or 1. 1 indicating that at least 1 passenger has selected that floor
+    public int [] floors = new int [FLOORS+1]; //passengers are the elements, number  of passengers for that floor
+    
     
     public Elevator(Building building){
            currentFloor = 1;
@@ -48,22 +49,13 @@ public class Elevator {
            }
           
                 
-           if ( floors[currentFloor] != 0 ){//if there is at least 1 person that needs to stop on this floor
+           if ( destination[currentFloor] == 1 ){//this floor is a destination because = 1
                 
-                        currentPassengers = currentPassengers - floors[currentFloor];//unload passengers that belong here
+                        destination[currentFloor] = 0; //floorRequested is no longer a destination
+                        currentPassengers = currentPassengers - floors[currentFloor];
                         floors[currentFloor] = 0; //empty the passengers that selected that floor
            }
-           
-           //board passengers that are waiting until full
-           while (passengersWaiting[currentFloor] != 0 && currentPassengers < CAPACITY){
-        	   
-        	   passengersWaiting[currentFloor] -= 1;// passengers waiting on current floor -1
-        	   floors[1] += 1;//everyone above floor 2 should go to floor 1 hw2 stated.
-        	   currentPassengers += 1;
-        	   
-           }
-           
-
+          
     }
    
    
@@ -72,17 +64,17 @@ public class Elevator {
         if ( currentPassengers < CAPACITY){  
            currentPassengers++;
                 
-           floors[destinationFloorNumber] += 1; //adds one passenger that needs to go to the floor    
+           floors[destinationFloorNumber] += 1; //adds one passenger to that needs to go to the floor
+           destination[destinationFloorNumber] = 1; //1 means its a destination 0 means elevator will not stop at this floor     
           
+           //System.out.println(floors[floor] + " total passenger loaded to floor " + floor);
         }
            
         else {
         	
-        	//throw new ElevatorFullException(destinationFloorNumber);
-        	if (currentPassengers >= CAPACITY){
-        		//throw new ElevatorFullException("The Elevator is full");
-        	}
-        
+        	//destination[destinationFloorNumber] = 1; //even if elevator is full, array should still indicate elevator needs to stop here next time
+        	throw new ElevatorFullException(destinationFloorNumber);
+        	
         }
            
     }

@@ -1,5 +1,6 @@
 package cscie55.hw2;
 
+//you might not need the flag array, you can do if destination[currentFloor] == 0; then dont go there
 
 public class Elevator {
 
@@ -10,6 +11,7 @@ public class Elevator {
     private char currentDirection;
     private int currentPassengers;
    
+    //public int [] destination = new int[FLOORS+1]; //elements can only be 0 or 1. 1 indicating that at least 1 passenger has selected that floor
     public int [] floors = new int[FLOORS+1]; //passengers are the elements, number  of passengers for that floor
     public int [] passengersWaiting =  new int[FLOORS+1]; //keeps track of passengers waiting on that floor
     
@@ -48,8 +50,9 @@ public class Elevator {
            }
           
                 
-           if ( floors[currentFloor] != 0 ){//if there is at least 1 person that needs to stop on this floor
+           if ( destination[currentFloor] != 0 ){//if there is at least 1 person that needs to stop on this floor
                 
+                        //destination[currentFloor] = 0; //floorRequested is no longer a destination
                         currentPassengers = currentPassengers - floors[currentFloor];//unload passengers that belong here
                         floors[currentFloor] = 0; //empty the passengers that selected that floor
            }
@@ -57,13 +60,19 @@ public class Elevator {
            //board passengers that are waiting until full
            while (passengersWaiting[currentFloor] != 0 && currentPassengers < CAPACITY){
         	   
-        	   passengersWaiting[currentFloor] -= 1;// passengers waiting on current floor -1
-        	   floors[1] += 1;//everyone above floor 2 should go to floor 1 hw2 stated.
+        	   passengersWaiting[currentFloor] -= 1;
         	   currentPassengers += 1;
+        	   floors[currentFloor] += 1;
         	   
            }
            
-
+           
+//           //not a destination if no one needs to go on this floor
+//           if (passengersWaiting[currentFloor] == 0 && floors[currentFloor] == 0){
+//        	   destination[currentFloor] = 0;//if no one is waiting for this floor then it should not be a destination
+//        	   								//and if no one needs to go on this floor flag to 0 as not a destination
+//           }					
+//          
     }
    
    
@@ -72,12 +81,15 @@ public class Elevator {
         if ( currentPassengers < CAPACITY){  
            currentPassengers++;
                 
-           floors[destinationFloorNumber] += 1; //adds one passenger that needs to go to the floor    
+           floors[destinationFloorNumber] += 1; //adds one passenger that needs to go to the floor
+           destination[destinationFloorNumber] = 1; //1 means its a destination 0 means elevator will not stop at this floor     
           
+           //System.out.println(floors[floor] + " total passenger loaded to floor " + floor);
         }
            
         else {
         	
+        	//destination[destinationFloorNumber] = 1; //even if elevator is full, array should still indicate elevator needs to stop here next time
         	//throw new ElevatorFullException(destinationFloorNumber);
         	if (currentPassengers >= CAPACITY){
         		//throw new ElevatorFullException("The Elevator is full");
